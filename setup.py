@@ -18,6 +18,7 @@ setup(
     url='https://bitbucket.org/minsa-dev/django-ubigeo',
     packages=[
         'ubigeo',
+        'ubigeo.migrations'
     ],
     include_package_data=True,
     zip_safe=False,
