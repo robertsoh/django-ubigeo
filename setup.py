@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
     from distutils.core import setup
 
@@ -16,10 +16,7 @@ setup(
     description="""A database with Ubigeo codes""",
     long_description=readme,
     url='https://bitbucket.org/minsa-dev/django-ubigeo',
-    packages=[
-        'ubigeo',
-        'ubigeo.migrations'
-    ],
+    packages=find_packages(exclude=('tests',)),
     include_package_data=True,
     zip_safe=False,
     keywords='ubigeo',
