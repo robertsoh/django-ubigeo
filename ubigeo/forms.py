@@ -21,5 +21,5 @@ class UbigeoForm(object):
                 self.fields[pro].queryset = getattr(self.instance, dep).provincias.all()
                 self.fields[dis].queryset = getattr(self.instance, pro).distritos.all()
             else:
-                self.fields[pro].queryset = Provincia.objects.filter(departamento_id=self.data[dep])
-                self.fields[dis].queryset = Distrito.objects.filter(provincia_id=self.data[pro])
+                self.fields[pro].queryset = Provincia.objects.filter(departamento_id=self.data.get(dep))
+                self.fields[dis].queryset = Distrito.objects.filter(provincia_id=self.data.get(pro))
