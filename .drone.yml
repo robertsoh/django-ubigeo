@@ -1,0 +1,10 @@
+build:
+  image: python:3.5
+  commands:
+    - pip install -r requirements_test.txt --cache-dir pip_cache_dir
+    - make lint
+    - make test
+cache:
+  mount:
+    - .git
+    - pip_cache_dir
