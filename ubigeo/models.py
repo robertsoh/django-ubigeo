@@ -19,6 +19,7 @@ class Departamento(models.Model):
         verbose_name = 'Departamento'
         verbose_name_plural = 'Departamentos'
         default_related_name = 'departamentos'
+        ordering = ('nombre',)
 
     def __str__(self):
         return self.nombre
@@ -40,6 +41,7 @@ class Provincia(models.Model):
         verbose_name = 'Provincia'
         verbose_name_plural = 'Provincias'
         default_related_name = 'provincias'
+        ordering = ('nombre',)
 
     def __str__(self):
         return self.nombre
@@ -61,6 +63,7 @@ class Distrito(models.Model):
         verbose_name = 'Distrito'
         verbose_name_plural = 'Distritos'
         default_related_name = 'distritos'
+        ordering = ('nombre',)
 
     def __str__(self):
         return self.nombre
