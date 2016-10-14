@@ -18,8 +18,12 @@ class UbigeoForm(object):
             self.fields[dis].queryset = Distrito.objects.none()
             if self._meta.model.objects.filter(id=self.instance.id).exists() and not self.data:
                 # when exists a record and not POST data get queryset from instance
-                self.fields[pro].queryset = getattr(self.instance, dep).provincias.all()
-                self.fields[dis].queryset = getattr(self.instance, pro).distritos.all()
+                instance_dep = getattr(self.instance, dep, None)
+                if instance_dep is not None:
+                    self.fields[pro].queryset = instance_dep.provincias.all()
+                instance_pro = getattr(self.instance, pro, None)
+                if instance_pro is not None:
+                    self.fields[dis].queryset = instance_pro.distritos.all()
             else:
-                self.fields[pro].queryset = Provincia.objects.filter(departamento_id=self.data.get(dep))
-                self.fields[dis].queryset = Distrito.objects.filter(provincia_id=self.data.get(pro))
+                self.fields[pro].queryset = Provincia.objects.filter(departamento_id=self.data.get(dep) or None)
+                self.fields[dis].queryset = Distrito.objects.filter(provincia_id=self.data.get(pro) or None)
